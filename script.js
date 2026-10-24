@@ -1,0 +1,5 @@
+const menuToggle=document.getElementById('menu-toggle');
+    const mobileMenu=document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click',()=>{const isOpen=menuToggle.getAttribute('aria-expanded')==='true';menuToggle.setAttribute('aria-expanded',String(!isOpen));mobileMenu.classList.toggle('hidden',isOpen);menuToggle.textContent=isOpen?'Menü':'Kapat';});
+    mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{mobileMenu.classList.add('hidden');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='Menü';}));
+    document.querySelectorAll('.filter-btn').forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;document.querySelectorAll('.filter-btn').forEach(item=>{item.classList.remove('active');item.setAttribute('aria-pressed','false')});button.classList.add('active');button.setAttribute('aria-pressed','true');document.querySelectorAll('.project-card').forEach(card=>{card.hidden=filter!=='all'&&card.dataset.category!==filter})}));
